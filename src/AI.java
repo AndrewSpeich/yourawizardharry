@@ -12,11 +12,13 @@ public class AI extends Player{
 		String choice;
 		if(playerHealthStatus == 1){
 			choice = "attack";
+			System.out.println("The evil one attacks!");
 		}else if( AIHealthStatus <= 12)
 		{
 			choice = "heal";
 		}else{
 			choice = "attack";
+			System.out.println("The evil one attacks!");
 		}
 		return choice;
 		
@@ -33,9 +35,11 @@ public class AI extends Player{
 			choice = "fireball";
 		}else if(mana >= spellbook.manaCost("rockslide") + 6){
 			choice = "rockslide";
-		}else{
+		}else if(mana >= spellbook.manaCost("rockslide")){
 			choice = "rockslide";
-			}
+		}else{
+			choice = "rainbowfart";
+		}
 			return choice;
 		
 	}

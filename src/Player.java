@@ -18,8 +18,10 @@ public class Player {
 	public void checkHealth(){
 		if(health>healthcap){
 			health = healthcap;
-			System.out.println("Health maxed");
-		}
+			System.out.println("\nHealth maxed");
+			}else{
+				System.out.println("\nHealth is " + health);
+			}
 	}
 	public void getMana(){
 		System.out.println( "Your mana is:"+ mana);
@@ -32,6 +34,8 @@ public class Player {
 	}
 	public void healMe(){
 		health += roll.RollMultiple(3,4);
+		checkHealth();
+		System.out.println("");
 	}
 	
 	public void restoreMana(){
@@ -53,7 +57,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.magicMissle();
 			}else{
-				System.out.println("Your spell fails");
+				System.out.println(name + " spell fails.");
 			}
 			break;		
 		case "fireball":
@@ -61,7 +65,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.fireball();
 			}else{
-				System.out.println("Your spell fails");
+				System.out.println(name + " spell fails.");
 			}
 			break;
 		case "rayoffrost":
@@ -69,7 +73,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.rayOfFrost();
 			}else{
-				System.out.println("Your spell fails");
+				System.out.println(name + " spell fails.");
 			}
 			break;
 		case "rockslide":
@@ -77,7 +81,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.rockSlide();
 			}else{
-				System.out.println("Your spell fails");
+				System.out.println(name + " spell fails.");
 			}
 			break;
 		default:
@@ -87,7 +91,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += 0;
 			}else{
-				System.out.println("Things aren't looking good, for you do not have the "
+				System.out.println("\nThings aren't looking good, you do not have the "
 						+ "\nmana to even cast a basic rainbowfart.");
 			}
 			break;
