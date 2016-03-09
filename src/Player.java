@@ -45,38 +45,52 @@ public class Player {
 			return false;
 		}
 	}
-	public int castSpell(String spell){
+	public int castSpell(String spellName){
 		int damageoutput = 0;
-		switch (spell.toLowerCase()){
-	case "fireball":
-		if(spellbook.manaCheck(mana, spell)){
-			mana -= spellbook.manaCost(spell);
-			damageoutput += spellbook.fireball();
-		}else{
-			System.out.println("Your spell fails");
-		}
-	case "rayoffrost":
-		if(spellbook.manaCheck(mana, spell)){
-			mana -= spellbook.manaCost(spell);
-			damageoutput += spellbook.rayOfFrost();
-		}else{
-			System.out.println("Your spell fails");
-		}
-	case "rockslide":
-		if(spellbook.manaCheck(mana, spell)){
-			mana -= spellbook.manaCost(spell);
-			damageoutput += spellbook.rockSlide();
-		}else{
-			System.out.println("Your spell fails");
-		}
-	default :
-		if(spellbook.manaCheck(mana, spell)){
-			mana -= spellbook.manaCost(spell);
-			damageoutput += spellbook.magicMissle();
-		}else{
-			System.out.println("Your spell fails");
-		}
-		
+		switch (spellName.toLowerCase()){
+		case "magicmissle":
+			if(spellbook.manaCheck(mana, spellName)){
+				mana -= spellbook.manaCost(spellName);
+				damageoutput += spellbook.magicMissle();
+			}else{
+				System.out.println("Your spell fails");
+			}
+			break;		
+		case "fireball":
+			if(spellbook.manaCheck(mana, spellName)){
+				mana -= spellbook.manaCost(spellName);
+				damageoutput += spellbook.fireball();
+			}else{
+				System.out.println("Your spell fails");
+			}
+			break;
+		case "rayoffrost":
+			if(spellbook.manaCheck(mana, spellName)){
+				mana -= spellbook.manaCost(spellName);
+				damageoutput += spellbook.rayOfFrost();
+			}else{
+				System.out.println("Your spell fails");
+			}
+			break;
+		case "rockslide":
+			if(spellbook.manaCheck(mana, spellName)){
+				mana -= spellbook.manaCost(spellName);
+				damageoutput += spellbook.rockSlide();
+			}else{
+				System.out.println("Your spell fails");
+			}
+			break;
+		default:
+			System.out.println("\nCheck your chant! Spelling in spells is crucial."
+					+ "\nYou lost mana from you pathetic spellcasting!");
+			if(spellbook.manaCheck(mana, spellName)){
+				mana -= spellbook.manaCost(spellName);
+				damageoutput += 0;
+			}else{
+				System.out.println("Things aren't looking good, for you do not have the "
+						+ "\nmana to even cast a basic rainbowfart.");
+			}
+			break;
 		}
 		return damageoutput;
 	}

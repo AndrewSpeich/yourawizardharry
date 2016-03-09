@@ -5,11 +5,17 @@ public class UI
 	
 	int damageToPlayer;
 	String name1;
-	
-	Player firstPlayer = new Player(GetName());
-	AI firstAI = new AI("Evi Wizard");
+
 	Scanner firstscan = new Scanner(System.in);
 	
+	public String GetName()
+	{
+		System.out.println("What's your name fool? ");
+		name1 = firstscan.nextLine();
+	return name1;
+	}	
+	Player firstPlayer = new Player(GetName());
+	AI firstAI = new AI("Evil Wizard");
 	
 	public void RunGameOnePlayer()
 	{
@@ -22,12 +28,47 @@ public class UI
 		
 	}
 	
-	public String GetName()
+	public String PlayerChoiceOne()
 	{
-		System.out.println("What's your name fool? ");
-		name1 = firstscan.next();
-	return name1;
-	}	
+		System.out.println(" \nWhat would you like to do?\n");
+		System.out.print("Attack or Heal");
+		String firstPlayerChoice = firstscan.next().toLowerCase();
+		return firstPlayerChoice;
+	}
+	
+	public String PlayerChoiceTwo()
+	{	
+		System.out.println(" \nWhat spell shall you yell?");
+		System.out.println("Available spells - MagicMissle - RayofFrost - Fireball - RockSlide");
+		String secondDecision = firstscan.next().toLowerCase();
+		return secondDecision;
+	
+	
+				
+	}
+	
+	public void PlayerOrAISpell(String whichPlayer)
+	{
+		int damagetoOpponent;
+		String AIspell = firstAI.SpellDecision();
+		switch(whichPlayer){
+		case"AI":
+			damagetoOpponent = firstAI.castSpell(AIspell);
+			firstPlayer.health -= damagetoOpponent;
+			System.out.println(" \nYou have been hurt by a level " + damagetoOpponent + " "
+					+ AIspell + "\nYour current health is " + firstPlayer.health);
+			break;
+		case"Player1":
+			damagetoOpponent = firstPlayer.castSpell(PlayerChoiceTwo());
+			firstAI.health -= damagetoOpponent;
+			System.out.println(" \nYou hit your opponent! \nYou did " + damagetoOpponent + " damage.\n"
+					+ "Your opponents remaining heath is " + firstAI.health + "\n ");
+			break;
+		default:
+			System.out.println("error error in PlayerOrAISpell");
+			break;
+		}
+	}
 	public void RoundStart(String attackChoice, String playerName)
 	{
 		
@@ -40,31 +81,6 @@ public class UI
 			break;
 		default:
 			firstPlayer.healMe();
-		}
-				
-	}
-	public String PlayerChoiceOne()
-	{
-		System.out.println("What would you like to do?\n");
-		System.out.print("Attack or Heal");
-		String firstPlayerChoice = firstscan.next().toLowerCase();
-		return firstPlayerChoice;
-	}
-	public String PlayerChoiceTwo()
-	{	
-		System.out.println("What spell shall you yell?");
-		System.out.println("Available spells - MagicMissle - RayofFrost - Fireball - RockSlide");
-		String secondDecision = firstscan.next().toLowerCase();
-		return secondDecision;
-	}
-	public void PlayerOrAISpell(String whichPlayer)
-	{
-		switch(whichPlayer){
-		case"AI":
-			firstPlayer.health -= firstAI.castSpell(firstAI.SpellDecision());
-			break;
-		case"Player1":
-			firstAI.health -= firstPlayer.castSpell(PlayerChoiceTwo());
 		}
 	}
 	

@@ -5,9 +5,9 @@ public class Spells {
 	
 	public boolean manaCheck(int mana, String spell){
 		if(mana < manaCost(spell)){
-		return true	;
+		return false;
 		}else{
-			return false;
+		return true;
 		}
 	}
 	public int manaCost(String name){
@@ -24,27 +24,30 @@ public class Spells {
 			case "rockslide":
 				cost = 9;
 				break;
+			default:
+				cost = 2;
+				break;
 		}
 		return cost;
 		
 	}
 	public int magicMissle(){
-		System.out.println("Fizzle Fizzle magic missle");
+		System.out.println(" \nFizzle Fizzle magic missle");
 		return roll.RollResult(12);
 	}
 	
 	public int rayOfFrost(){
-	System.out.println("Frost laser");
+	System.out.println(" \nFrost laser");
 	return roll.RollResult(8);
 	}
 	
 	public int fireball(){
-		System.out.println("Whoosh!");
+		System.out.println(" \nWhoosh!");
 		return roll.RollResult(10);
 	}
 	
 	public int rockSlide(){
-		System.out.println("Rumble");
+		System.out.println(" \nRumble");
 		return roll.RollResult(6);
 	}
 

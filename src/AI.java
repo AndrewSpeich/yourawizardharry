@@ -26,7 +26,7 @@ public class AI extends Player{
 	{
 		String choice;
 		if(mana >= spellbook.manaCost("magicmissle") + 6){
-			choice = "MagicMissle";
+			choice = "magicmissle";
 		}else if(mana >= spellbook.manaCost("rayoffrost") + 6){
 			choice = "rayoffrost";
 		}else if(mana >= spellbook.manaCost("fireball") + 6){
