@@ -4,28 +4,28 @@ public class Spells {
 	int cost;
 	
 	public boolean manaCheck(int mana, String spell){
-		manaCost(spell);
-		if(mana < cost){
+		if(mana < manaCost(spell)){
 		return true	;
 		}else{
 			return false;
 		}
 	}
-	public void manaCost(String name){
+	public int manaCost(String name){
 		switch (name){
-			case "MagicMissle":
+			case "magicmissle":
 				cost = 18;
 				break;
-			case "RayofFrost":
+			case "rayoffrost":
 				cost = 12;
 				break;
-			case "Fireball":
+			case "fireball":
 				cost = 15;
 				break;
-			case "RockSlide":
+			case "rockslide":
 				cost = 9;
 				break;
 		}
+		return cost;
 		
 	}
 	public int magicMissle(){
