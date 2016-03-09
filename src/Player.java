@@ -7,6 +7,7 @@ public class Player {
 	String name;
 	int defense = 10;
 	Dice roll = new Dice();
+	Spells spellbook = new Spells();
 	public Player(String named){
 		name = named;
 		
@@ -37,6 +38,46 @@ public class Player {
 		mana += roll.RollResult(20);
 	}
 	public boolean isDead(){
-		if ()
+		if (health <= 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	public int castSpell(String spell){
+		int damageoutput = 0;
+		switch (spell){
+	case "fireball":
+		if(spellbook.manaCheck(mana, spell)){
+			
+			damageoutput += spellbook.fireball();
+		}else{
+			System.out.println("Your spell fails");
+		}
+	case "rayoffrost":
+		if(spellbook.manaCheck(mana, spell)){
+			
+			damageoutput += spellbook.rayOfFrost();
+		}else{
+			System.out.println("Your spell fails");
+		}
+	case "rockslide":
+		if(spellbook.manaCheck(mana, spell)){
+			
+			damageoutput += spellbook.rockSlide();
+		}else{
+			System.out.println("Your spell fails");
+		}
+	default :
+		if(spellbook.manaCheck(mana, spell)){
+			
+			damageoutput += spellbook.magicMissle();
+		}else{
+			System.out.println("Your spell fails");
+		}
+		
+		}
+		return damageoutput;
 	}
 }
