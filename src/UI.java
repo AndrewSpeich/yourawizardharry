@@ -6,7 +6,7 @@ public class UI
 	int damageToPlayer;
 	String name1;
 	
-	Player1 firstPlayer = new Player1(GetName());
+	Player firstPlayer = new Player(GetName());
 	AI firstAI = new AI("Evi Wizard");
 	Scanner firstscan = new Scanner(System.in);
 	
@@ -16,6 +16,7 @@ public class UI
 		while(firstPlayer.health>0 && firstAI.health>0){
 			
 			RoundStart(PlayerChoiceOne(), "Player1");
+			
 			RoundStart(firstAI.AttackDecision(firstPlayer.health, firstAI.health),"AI");
 		}
 		
@@ -60,10 +61,10 @@ public class UI
 	{
 		switch(whichPlayer){
 		case"AI":
-			firstAI.castSpell(firstAI.SpellDecision());
+			firstPlayer.health -= firstAI.castSpell(firstAI.SpellDecision());
 			break;
 		case"Player1":
-			firstPlayer.castSpell(PlayerChoiceTwo());
+			firstAI.health -= firstPlayer.castSpell(PlayerChoiceTwo());
 		}
 	}
 	

@@ -47,31 +47,31 @@ public class Player {
 	}
 	public int castSpell(String spell){
 		int damageoutput = 0;
-		switch (spell){
+		switch (spell.toLowerCase()){
 	case "fireball":
 		if(spellbook.manaCheck(mana, spell)){
-			
+			mana -= spellbook.manaCost(spell);
 			damageoutput += spellbook.fireball();
 		}else{
 			System.out.println("Your spell fails");
 		}
 	case "rayoffrost":
 		if(spellbook.manaCheck(mana, spell)){
-			
+			mana -= spellbook.manaCost(spell);
 			damageoutput += spellbook.rayOfFrost();
 		}else{
 			System.out.println("Your spell fails");
 		}
 	case "rockslide":
 		if(spellbook.manaCheck(mana, spell)){
-			
+			mana -= spellbook.manaCost(spell);
 			damageoutput += spellbook.rockSlide();
 		}else{
 			System.out.println("Your spell fails");
 		}
 	default :
 		if(spellbook.manaCheck(mana, spell)){
-			
+			mana -= spellbook.manaCost(spell);
 			damageoutput += spellbook.magicMissle();
 		}else{
 			System.out.println("Your spell fails");

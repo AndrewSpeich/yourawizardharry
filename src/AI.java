@@ -11,7 +11,7 @@ public class AI extends Player{
 	{
 		String choice;
 		if(playerHealthStatus == 1){
-			choice = "Attack";
+			choice = "attack";
 		}else if( AIHealthStatus <= 12)
 		{
 			choice = "heal";
