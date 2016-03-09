@@ -15,14 +15,7 @@ public class Player {
 	public void getHealth(){
 		System.out.println( "Your health is:"+ health);
 	}
-	public void checkHealth(){
-		if(health>healthcap){
-			health = healthcap;
-			System.out.println("\nHealth maxed");
-			}else{
-				System.out.println("\nHealth is " + health);
-			}
-	}
+	
 	public void getMana(){
 		System.out.println( "Your mana is:"+ mana);
 	}
@@ -32,10 +25,20 @@ public class Player {
 			System.out.println("Mana maxed");
 		}
 	}
+	public void checkHealth(){
+		if(health>healthcap){
+			health = healthcap;
+			System.out.println("\nHealth maxed");
+			}else{
+				System.out.println(name + "'s Health is " + health);
+			}
+	}
 	public void healMe(){
-		health += roll.RollMultiple(3,4);
+		int healthgain= roll.RollMultiple(3,4);
+		health += healthgain;
+		System.out.println(" \n" + name + " gained " + healthgain + " health.");
 		checkHealth();
-		System.out.println("");
+		
 	}
 	
 	public void restoreMana(){
@@ -43,6 +46,7 @@ public class Player {
 	}
 	public boolean isDead(){
 		if (health <= 0){
+			System.out.println(name + " died");
 			return true;
 		}
 		else{
@@ -57,7 +61,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.magicMissle();
 			}else{
-				System.out.println(name + " spell fails.");
+				System.out.println(name + "'s spell fails.");
 			}
 			break;		
 		case "fireball":
@@ -65,7 +69,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.fireball();
 			}else{
-				System.out.println(name + " spell fails.");
+				System.out.println(name + "'s spell fails.");
 			}
 			break;
 		case "rayoffrost":
@@ -73,7 +77,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.rayOfFrost();
 			}else{
-				System.out.println(name + " spell fails.");
+				System.out.println(name + "'s spell fails.");
 			}
 			break;
 		case "rockslide":
@@ -81,7 +85,7 @@ public class Player {
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.rockSlide();
 			}else{
-				System.out.println(name + " spell fails.");
+				System.out.println(name + "'s spell fails.");
 			}
 			break;
 		default:

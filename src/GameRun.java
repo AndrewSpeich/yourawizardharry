@@ -5,26 +5,27 @@ public class GameRun
 	boolean tryAgain;
 	int damageToPlayer;
 
+	GuiCreate firstGUI = new GuiCreate();
 	Scanner firstscan = new Scanner(System.in);
 	UserInterface userI = new UserInterface();
 	Player firstPlayer = new Player(userI.GetName());
 	AI firstAI = new AI("Evil Wizard");
 		
-	public void RunGameOverOnePLayer()
+	public void RunGameAgainOnePlayer()
 	{
-		while(tryAgain)
-		{
-			GameRun retry = new GameRun();
-			retry.RunGameOnePlayer();
-			System.out.print(" \nWould you like to play again?");
-			userI.PlayAgain();
-		}
-		
+			RunGameOnePlayer();
+			System.out.print(" \nWould you like to play again?\n");
+			if(userI.PlayAgain()){
+				GameRun retry = new GameRun();
+				retry.RunGameOnePlayer();
+			}else{
+				System.out.println("Fine be that way.");
+			}		
 	}
 	
 	public void RunGameOnePlayer()
 	{
-		while(firstPlayer.health>0 && firstAI.health>0){
+		while(!firstPlayer.isDead() && !firstAI.isDead()){
 			
 			RoundStart(userI.PlayerChoiceOne(), "Player1");
 			firstPlayer.restoreMana();
@@ -32,9 +33,8 @@ public class GameRun
 			RoundStart(firstAI.AttackDecision(firstPlayer.health, firstAI.health),"AI");
 			firstAI.restoreMana();
 			}
-		
+		System.out.println(" \nGame Over.");
 	}
-	
 	public void PlayerOrAISpell(String whichPlayer)
 	{
 		int damagetoOpponent;
@@ -65,10 +65,16 @@ public class GameRun
 			PlayerOrAISpell(playerName);
 			break;
 		case"heal":
-			firstPlayer.healMe();
+			if(playerName .equals("AI")){
+				firstAI.healMe();
+			}else
+				firstPlayer.healMe();
 			break;
 		default:
-			firstPlayer.healMe();
+			if(playerName .equals("AI")){
+				firstAI.healMe();
+			}else
+				firstPlayer.healMe();
 		}
 	}
 	

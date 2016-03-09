@@ -24,6 +24,7 @@ public class UserInterface {
 	}
 	public boolean PlayAgain()
 	{
+		replay = firstscan.next().toLowerCase();
 		if(replay .equals("yes")){
 			playAgain = true;
 		}else{

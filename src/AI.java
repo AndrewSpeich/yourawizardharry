@@ -12,13 +12,13 @@ public class AI extends Player{
 		String choice;
 		if(playerHealthStatus == 1){
 			choice = "attack";
-			System.out.println("The evil one attacks!");
+			System.out.println(" \nThe evil one attacks!");
 		}else if( AIHealthStatus <= 12)
 		{
 			choice = "heal";
 		}else{
 			choice = "attack";
-			System.out.println("The evil one attacks!");
+			System.out.println(" \nThe evil one attacks!");
 		}
 		return choice;
 		
