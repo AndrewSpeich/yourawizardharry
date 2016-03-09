@@ -12,6 +12,11 @@ public class GuiCreate extends JFrame{
 		window.setLayout(new GridLayout(2,1));
 		JLabel textdisplay = new JLabel();
 		JPanel buttonbox = new JPanel();
+		buttonbox.setLayout(new GridLayout(2,1));
+		JButton single = new JButton("Single player");
+		JButton multi = new JButton("Multi Player (vs)");
+		
+		
 		
 		gamewindow.add(textdisplay);
 		
