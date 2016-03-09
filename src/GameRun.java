@@ -10,7 +10,7 @@ public class GameRun
 	Player firstPlayer = new Player(userI.GetName());
 	AI firstAI = new AI("Evil Wizard");
 		
-	public void RunGameOver()
+	public void RunGameOverOnePLayer()
 	{
 		while(tryAgain)
 		{
