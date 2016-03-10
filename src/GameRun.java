@@ -24,9 +24,9 @@ public class GameRun
 		}
 	}
 		
- 	public void RunGameAgainOnePlayer()
+ 	public void RunGameAgain()
 	{
-			RunGameOnePlayer();
+			chooseGameType();
 			System.out.print(" \nWould you like to play again?\n");
 			if(userI.PlayAgain()){
 				GameRun retry = new GameRun();
@@ -48,25 +48,26 @@ public class GameRun
 			firstAI.restoreMana();
 			}
 		System.out.println(" \nGame Over.");
+		RunGameAgain();
 	}
 	public void runGameTwoPlayer(){
-		
-		for(int i = 0; i<2; i++){
+		int length = userI.getNumberPlayers();
+		for(int i = 0; i<length; i++){
 			playerlist.add(new Player(userI.GetName()));
 		}
 		while(!( playerlist.get(0).isDead())&&!( playerlist.get(1).isDead())){
 			
-			System.out.print(playerlist.get(0).name+" ") ;
-			RoundStartMulti(userI.PlayerChoiceOne(), "Player1");
-			playerlist.get(0).restoreMana();
+			for(int ind = 0; ind < playerlist.size(); ind++){
 			
-			System.out.print(playerlist.get(1).name+" ") ;
-			RoundStartMulti(userI.PlayerChoiceOne(),"Player2");
-			playerlist.get(1).restoreMana();
+				System.out.print(playerlist.get(1).name+" ") ;
+				RoundStartMulti(userI.PlayerChoiceOne(),ind ,playerlist.indexOf(userI.opponentChoice(playerlist)));
+				playerlist.get(ind).restoreMana();
+				}
 			
 			}
 		
 		System.out.println(" \nGame Over.");
+		RunGameAgain();
 	}
 	
 	
@@ -113,51 +114,33 @@ public class GameRun
 				firstPlayer.healMe();
 		}
 	}
-	public void RoundStartMulti(String attackChoice, String playerName)
+	public void RoundStartMulti(String attackChoice, int index, int choice )
 	{
 		
 		switch(attackChoice){
 		case"attack":
-			MultiplayerSpell(playerName);
+			MultiplayerSpell(index, choice);
 			break;
-		case"heal":
-			if(playerName .equals("Player2")){
-				playerlist.get(1).healMe();
-			}else
-				playerlist.get(0).healMe();
-			break;
+		
 		default:
-			if(playerName .equals("Player2")){
-				playerlist.get(1).healMe();
-			}else
-				playerlist.get(0).healMe();
+			
+				playerlist.get(index).healMe();
+			break;
 		}
 	}
-	public void MultiplayerSpell(String whichPlayer)
+	public void MultiplayerSpell(int ind, int target)
 	{
 		int damagetoOpponent;
 		String spellchoice;
 		
-		switch(whichPlayer){
-		case"Player2":
 			 spellchoice = userI.PlayerChoiceTwo();
-			damagetoOpponent = playerlist.get(1).castSpell(spellchoice);
-			playerlist.get(0).health -= damagetoOpponent;
+			damagetoOpponent = playerlist.get(ind).castSpell(spellchoice);
+			playerlist.get(target).health -= damagetoOpponent;
 			System.out.println(" \nYou have been hurt by a level " + damagetoOpponent + " "
-					+ spellchoice + "\nYour current health is " + playerlist.get(0).health);
-			break;
-		case"Player1":
-			 spellchoice = userI.PlayerChoiceTwo();
-				damagetoOpponent = playerlist.get(0).castSpell(spellchoice);
-				playerlist.get(1).health -= damagetoOpponent;
-				System.out.println(" \nYou have been hurt by a level " + damagetoOpponent + " "
-						+ spellchoice + "\nYour current health is " + playerlist.get(1).health);
-			break;
-		default:
-			System.out.println("error error in PlayerOrAISpell");
-			break;
+					+ spellchoice + "\nYour current health is " + playerlist.get(target).health);
+		
 		}
-	}
 }
+
 		
 

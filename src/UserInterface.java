@@ -14,6 +14,13 @@ public class UserInterface {
 		String firstPlayerChoice = firstscan.next().toLowerCase();
 		return firstPlayerChoice;
 	}
+	public int getNumberPlayers()
+	{
+		System.out.println(" \nhow many players?\n");
+		
+		int firstPlayerChoice =  firstscan.nextInt();
+		return firstPlayerChoice;
+	}
 	
 	public String PlayerChoiceTwo()
 	{	
