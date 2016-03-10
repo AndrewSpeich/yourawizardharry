@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -6,6 +7,7 @@ public class UserInterface {
 	String replay;
 	String name1;
 	boolean playAgain;
+	String opponentchoice;
 
 	public String PlayerChoiceOne()
 	{
@@ -38,4 +40,13 @@ public class UserInterface {
 		name1 = firstscan.nextLine();
 	return name1;
 	}	
+	public String opponentChoice(ArrayList<Player> wholeList)
+	{
+		System.out.println("Which one shall you attack?\n");
+		for(int i=0;i<wholeList.size();i++){
+			System.out.println(wholeList.get(i));
+		}
+		opponentchoice = firstscan.next().toLowerCase();
+		return opponentchoice;
+	}
 }

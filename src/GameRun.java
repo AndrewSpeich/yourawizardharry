@@ -148,9 +148,9 @@ public class GameRun
 			break;
 		case"Player1":
 			 spellchoice = userI.PlayerChoiceTwo();
-				damagetoOpponent = playerlist.get(0).castSpell(spellchoice);
-				playerlist.get(1).health -= damagetoOpponent;
-				System.out.println(" \nYou have been hurt by a level " + damagetoOpponent + " "
+			damagetoOpponent = playerlist.get(0).castSpell(spellchoice);
+			playerlist.get(1).health -= damagetoOpponent;
+			System.out.println(" \nYou have been hurt by a level " + damagetoOpponent + " "
 						+ spellchoice + "\nYour current health is " + playerlist.get(1).health);
 			break;
 		default:
