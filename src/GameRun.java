@@ -137,8 +137,10 @@ public class GameRun
 			damagetoOpponent = playerlist.get(ind).castSpell(spellchoice);
 			playerlist.get(target).health -= damagetoOpponent;
 			System.out.println(" \nYou have been hurt by a level " + damagetoOpponent + " "
+
 					+ spellchoice + "\nYour current health is " + playerlist.get(target).health);
 		
+
 		}
 }
 
