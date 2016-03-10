@@ -18,7 +18,7 @@ public class UserInterface {
 	public String PlayerChoiceTwo()
 	{	
 		System.out.println(" \nWhat spell shall you yell?");
-		System.out.println("Available spells - MagicMissle - RayofFrost - Fireball - RockSlide");
+		System.out.println("Available spells - MagicMissile - RayofFrost - Fireball - RockSlide");
 		String secondDecision = firstscan.next().toLowerCase();
 		return secondDecision;
 	}

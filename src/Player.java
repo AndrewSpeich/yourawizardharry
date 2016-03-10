@@ -56,7 +56,7 @@ public class Player {
 	public int castSpell(String spellName){
 		int damageoutput = 0;
 		switch (spellName.toLowerCase()){
-		case "magicmissle":
+		case "magicmissile":
 			if(spellbook.manaCheck(mana, spellName)){
 				mana -= spellbook.manaCost(spellName);
 				damageoutput += spellbook.magicMissle();

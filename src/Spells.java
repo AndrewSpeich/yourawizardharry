@@ -12,7 +12,7 @@ public class Spells {
 	}
 	public int manaCost(String name){
 		switch (name){
-			case "magicmissle":
+			case "magicmissile":
 				cost = 18;
 				break;
 			case "rayoffrost":
@@ -32,7 +32,7 @@ public class Spells {
 		
 	}
 	public int magicMissle(){
-		System.out.println(" \nFizzle Fizzle magic missle");
+		System.out.println(" \nFizzle Fizzle magic missile");
 		return roll.RollResult(12);
 	}
 	
